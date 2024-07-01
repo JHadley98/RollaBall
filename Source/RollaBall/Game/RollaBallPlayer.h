@@ -32,11 +32,11 @@ protected:
 	UCameraComponent* Camera;
 
 	// Variables
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Controls")
 		float MoveForce = 500.0f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Controls")
 		float JumpImpluse = 500.0f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Controls")
 		int32 MaxJumpCount = 1;
 
 
@@ -53,6 +53,10 @@ private:
 	void MoveRight(float Value); // Value: -1 move left (A), 0 don't move, 1 move right (D)
 	void MoveForward(float Value); // Value: -1 move back (S), 0 don't move, 1 move forward (W)
 	void Jump();
+	
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, 
+		FVector NormalImpulse, const FHitResult& Hit);
 
 	int32 JumpCount = 0;
 };
